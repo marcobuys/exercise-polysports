@@ -13,6 +13,10 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
+        if (Customer::query()->exists()) {
+            return;
+        }
+
         $customers = $this->seedCustomers();
         $products = $this->seedProducts();
         $this->seedHistoricalOrders($customers, $products);
